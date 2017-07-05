@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import GoogleMap from './components/GoogleMap/GoogleMap.js'
+import CrimeMap from './components/CrimeMap/CrimeMap.js';
 
 class App extends Component {
     
@@ -8,7 +8,7 @@ class App extends Component {
 	return (
 	    <div className="App">
             <h2>Crime Map</h2>
-	    <GoogleMap />
+	    <CrimeMap />
 	    </div>
 	);
     }
