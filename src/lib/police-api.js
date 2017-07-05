@@ -15,13 +15,20 @@
 */
 
 const getCrimesForLocation = async(latitude,longitude,date) => {
+
+  let crimes = [];
+
+  try {
+      
+    let response = await fetch(`https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}&date=${date.getFullYear()}-${date.getMonth()}`)
+    crimes = await response.json();
+    
+  } catch(e) {
+    console.error(e);
+  }
   
-  let response = await fetch(`https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}&date=${date.getFullYear()}-${date.getMonth()}`)
-
-  let crimes = await response.json();
-
   return crimes.map(crime=>{ // map out any non essential data
-    return { type:crime.category,lat:crime.location.longitude,lng:crime.location.longitude }
+    return { type:crime.category,lat:parseFloat(crime.location.latitude,10),lng:parseFloat(crime.location.longitude,10) }
   });
   
 }
