@@ -50,7 +50,6 @@ export default class CrimeMap extends Component {
         position: {
           lat: crime.lat, lng: crime.lng
         },
-        label: crime.type,
         key: i,
         defaultAnimation: 2
       }
